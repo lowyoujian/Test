@@ -4,38 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace FirstApplication
 {
     public class User
     {
         private string name;
-        public void RegisterAccount()
+        private string password;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+        public bool RegisterAccount()
         {
             //Text from textfield are added to the object variables    
             //Account stored in a file
+            name     = this.name.Trim();
+            password = this.password.Trim();
            
-            try
+            if (name.Length < 3 || name.Length > 20 || password.Length < 7) 
             {
-                if (((this.name).Trim()).Length < 3
-                   || ((this.name).Trim()).Length > 20
-                   )
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
+                return false;
             }
-
-
-            catch (Exception e)
+            else 
             {
-                Console.WriteLine("{0} Exception caught.", e);
+                return true;
             }
-
-            
 
         }
-        public User(string name)
+        public User()
         {
-            this.name = name;
+           
         }
 
     }
@@ -43,7 +49,7 @@ namespace FirstApplication
     {
         static void Main(string[] args)
         {
-            User user = new User("Ls");
+            User user = new User();
             user.RegisterAccount();
 
             Console.ReadKey();

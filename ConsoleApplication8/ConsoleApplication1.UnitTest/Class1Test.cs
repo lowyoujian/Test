@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using FirstApplication;
 
-namespace ConsoleApplication8Test
+namespace FirstApplicationTest
 {
     
 
     class Class1Test
     {
+
+        
         private User user;
 
         [SetUp]
@@ -29,3 +31,5 @@ namespace ConsoleApplication8Test
         }
     }
 }
+
+
