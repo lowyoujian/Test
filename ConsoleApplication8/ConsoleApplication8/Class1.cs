@@ -29,13 +29,13 @@ namespace FirstApplication
             name     = this.name.Trim();
             password = this.password.Trim();
            
-            if (name.Length < 3 || name.Length > 20 || password.Length < 7) 
+            if ( name.Length>=3 && name.Length <= 20 && password.Length >= 7) 
             {
-                return false;
+                return true;
             }
             else 
             {
-                return true;
+                return false;
             }
 
         }
