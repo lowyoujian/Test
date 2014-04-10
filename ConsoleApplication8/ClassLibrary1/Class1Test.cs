@@ -19,7 +19,7 @@ namespace ConsoleApplication8Test
 	    {
 	        user = new User();
 	    }
-	
+	//test
 	    [Test]
         [TestCase("123","1234567",true)]
         [TestCase("", "aaaaaa", false)]
