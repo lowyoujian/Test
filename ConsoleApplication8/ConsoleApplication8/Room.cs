@@ -53,18 +53,21 @@ namespace FirstApplication
 
     public class LuxuryRoom : Room
     {
+       
         private double price;
 
         public LuxuryRoom()
         { 
             myRoom = new DisplayLuxuryRoom();
             myCalculate = new NormalCalculate();
+            
         }
     }
 
     public class NormalRoom : Room
     {
-        static private double price=200.00;     
+        
+         private double price=200.00;     
 
         public NormalRoom()
         { 
@@ -76,7 +79,7 @@ namespace FirstApplication
 
     public class BudgetRoom : Room
     {
-        static private double price=100.00;
+         private double price=100.00;
 
         public BudgetRoom()
         {

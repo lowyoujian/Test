@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+/*TODO
+ *Add real code into methods related to room
+ */
 
 namespace FirstApplication
 {
@@ -90,15 +93,7 @@ namespace FirstApplication
         {
             //TODO Welcome user
         }
-        
-
-        
-
     
-                 
-
-
-
         public User()
         {
         }
