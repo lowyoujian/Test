@@ -90,6 +90,9 @@ namespace FirstApplication
         {
             //TODO Welcome user
         }
+        
+
+        
 
     
                  
@@ -119,8 +122,22 @@ namespace FirstApplication
                 Console.WriteLine("success");
             else
                 Console.WriteLine("failed");
-         
+            
+            LuxuryRoom luxroom1    = new LuxuryRoom();
+            NormalRoom normalroom1 = new NormalRoom();
+            BudgetRoom budgetroom1 = new BudgetRoom();
+
+            List<Room> roomList = new List<Room>();
+            roomList.Add(luxroom1);
+            roomList.Add(budgetroom1);
+            
+            foreach(Room r in roomList)
+            {
+                r.DoDisplay();
+            }
             Console.ReadKey();
+
+
         }
     }
     //classes for File.exist for test 
