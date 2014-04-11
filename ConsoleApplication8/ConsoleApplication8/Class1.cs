@@ -12,7 +12,7 @@ namespace FirstApplication
     {
         private string name;
         private string password;
-        public string Name
+        public  string Name
         {
             get { return name; }
             set { name = value; }
@@ -23,13 +23,15 @@ namespace FirstApplication
             get { return password; }
             set { password = value; }
         }
+
+        //Methods
         public bool ValidateInput()
-        {
+        {   
             //Text from textfield are added to the object variables    
             //Account stored in a file
             name     = this.name.Trim();
             password = this.password.Trim();
-           
+
             if ( name.Length>=3 && name.Length <= 20 && password.Length >= 7) 
             {
                 return true;
@@ -38,27 +40,71 @@ namespace FirstApplication
             {
                 return false;
             }
-
         }
         public void RegisterAccount()
         {
-
-
-            using (StreamWriter writer = new StreamWriter(name+".txt"))
+            using (StreamWriter writer = new StreamWriter("Users.txt"))
             {
                 writer.Write(name);
-                writer.Write(string.Format(" "+password+"\n"));
+                writer.Write(string.Format("\n" + password + "\n"));
             }
-           
-
         }
+        public bool Login()
+        {
+
+            this.name = "12h34";
+            this.password = "12345678";
+            string firststr;
+            string secondstr;
+            try
+            {
+                using (StreamReader reader = new StreamReader("Users.txt"))
+                {
+                    while ((firststr = reader.ReadLine()) != null)
+                    {
+
+                        
+                        if (firststr == name)
+                        {
+                            secondstr = reader.ReadLine();
+                            
+                            if (secondstr == password)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The file could not be read: ");
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            
+        }
+        public void DisplayWelcome(bool value)
+        {
+            //TODO Welcome user
+        }
+
+    
+                 
+
+
+
         public User()
         {
-           
+        }
+        public User(Object objecta)
+        {
         }
 
     }
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -69,8 +115,23 @@ namespace FirstApplication
             {
                 user.RegisterAccount();
             }
-            
+            if (user.Login())
+                Console.WriteLine("success");
+            else
+                Console.WriteLine("failed");
+         
             Console.ReadKey();
         }
+    }
+    //classes for File.exist for test 
+    public interface IFile
+    {
+        bool Exists(string fn);
+    }
+
+    public class FileImpl : IFile
+    {
+        public virtual bool Exists(string fn)
+        { return File.Exists(fn); }
     }
 }
