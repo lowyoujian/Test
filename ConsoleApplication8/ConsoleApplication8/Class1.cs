@@ -52,7 +52,7 @@ namespace FirstApplication
         public bool Login()
         {
 
-            this.name = "12h34";
+            this.name = "1234";
             this.password = "12345678";
             string firststr;
             string secondstr;
@@ -130,10 +130,15 @@ namespace FirstApplication
             List<Room> roomList = new List<Room>();
             roomList.Add(luxroom1);
             roomList.Add(budgetroom1);
+            //change luxrom to customdiscount
+            luxroom1.MyCalculate = new CustomDiscount();
+
             
             foreach(Room r in roomList)
             {
                 r.DoDisplay();
+                r.DoCalculatePrice(90);
+
             }
             Console.ReadKey();
 

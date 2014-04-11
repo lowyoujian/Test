@@ -13,14 +13,25 @@ namespace FirstApplication
 
     public interface ICalculatePrice
     {
-        double DoCalculate();
+        void CalculatePrice(int discount);
     }
     
     public abstract class Room
     {
+
+        private double price;
+        private double discountPrice;
         private int available;
 
         protected IDisplayRoom myRoom;
+        protected ICalculatePrice myCalculate;
+
+        public ICalculatePrice MyCalculate
+        {
+            get { return myCalculate; }
+            set { myCalculate = value; }
+        }
+
 
         public IDisplayRoom MyRoom
         {
@@ -32,17 +43,23 @@ namespace FirstApplication
         {
             myRoom.DisplayRoomInfo();
         }
-        
+        public void DoCalculatePrice(int discount)
+        {
+            myCalculate.CalculatePrice(discount);
+        }
     }
 
    
 
     public class LuxuryRoom : Room
     {
-        private double price=300.00;
+        private double price;
 
         public LuxuryRoom()
-        { myRoom = new DisplayLuxuryRoom(); }
+        { 
+            myRoom = new DisplayLuxuryRoom();
+            myCalculate = new NormalCalculate();
+        }
     }
 
     public class NormalRoom : Room
@@ -50,7 +67,10 @@ namespace FirstApplication
         static private double price=200.00;     
 
         public NormalRoom()
-        { myRoom = new DisplayNormalRoom(); }
+        { 
+            myRoom = new DisplayNormalRoom();
+            myCalculate = new NormalCalculate();
+        }
 
     }
 
@@ -59,7 +79,10 @@ namespace FirstApplication
         static private double price=100.00;
 
         public BudgetRoom()
-        { myRoom = new DisplayBudgetRoom(); }
+        {
+            myRoom = new DisplayBudgetRoom();
+            myCalculate = new NormalCalculate();
+        }
         
     }
 
@@ -91,26 +114,46 @@ namespace FirstApplication
 
     public class SchoolHolidayCalculate : ICalculatePrice
     {
-        // price for schoolholiday
+        public void CalculatePrice(int discount)
+        {
+            double cost =0;
+            //some calculation here
+            
+        }
     }
 
     public class NormalCalculate : ICalculatePrice
     {
-        // price for schoolholiday
+        public void CalculatePrice(int discount)
+        {
+            double cost = 0;
+            //some calculation here
+            Console.WriteLine("normal Calculate");
+            
+        }
     }
 
-    public class SchoolHolidayCalculate : ICalculatePrice
-    {
-        // price for schoolholiday
-    }
+
 
     public class PublicHolidayCalculate : ICalculatePrice
     {
-        // price for schoolholiday
+        public void CalculatePrice(int discount)
+        {
+            double cost = 0;
+            //some calculation here
+            
+        }
     }
 
     public class CustomDiscount : ICalculatePrice
     {
+        public void CalculatePrice(int discount)
+        {
+            double cost = 0;
+            Console.WriteLine("this is the custom discount");
+
+            
+        }
         
     }
 
