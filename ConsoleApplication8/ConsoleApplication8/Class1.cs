@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 
 namespace FirstApplication
@@ -22,7 +23,7 @@ namespace FirstApplication
             get { return password; }
             set { password = value; }
         }
-        public bool RegisterAccount()
+        public bool ValidateInput()
         {
             //Text from textfield are added to the object variables    
             //Account stored in a file
@@ -39,6 +40,18 @@ namespace FirstApplication
             }
 
         }
+        public void RegisterAccount()
+        {
+
+
+            using (StreamWriter writer = new StreamWriter(name+".txt"))
+            {
+                writer.Write(name);
+                writer.Write(string.Format(" "+password+"\n"));
+            }
+           
+
+        }
         public User()
         {
            
@@ -49,9 +62,14 @@ namespace FirstApplication
     {
         static void Main(string[] args)
         {
-            User user = new User();
-            user.RegisterAccount();
-
+            User user     = new User();
+            user.Name     = "1234";
+            user.Password = "12345678";
+            if (user.ValidateInput())
+            {
+                user.RegisterAccount();
+            }
+            
             Console.ReadKey();
         }
     }
