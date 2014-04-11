@@ -11,8 +11,6 @@ namespace FirstApplication
     {
         private string name;
         private string password;
-        static bool namebool;
-        static bool passwordbool;
         public string Name
         {
             get { return name; }
@@ -31,25 +29,15 @@ namespace FirstApplication
             name     = this.name.Trim();
             password = this.password.Trim();
            
-            if ( name.Length>=3 && name.Length <= 20)
+            if ( name.Length>=3 && name.Length <= 20 && password.Length >= 7) 
             {
-                namebool=true;
+                return true;
             }
             else 
             {
-               namebool=false;
+                return false;
             }
 
-
-             if ( password.Length>=6)
-            {
-                passwordbool = true;
-            }
-            else 
-            {
-                passwordbool = false;
-            }
-             return (namebool && passwordbool);
         }
         public User()
         {
