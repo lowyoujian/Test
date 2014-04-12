@@ -15,11 +15,55 @@ namespace FirstApplication
     {
         void CalculatePrice(int discount);
     }
+
+    abstract class Package
+    {
+        private List<Room> _rooms = new List<Room>();
+
+        // Constructor calls abstract Factory method
+
+        public Package()
+        {
+            this.CreateRooms();
+        }
+
+        public List<Room> Rooms
+        {
+            get { return _rooms; }
+        }
+        // Factory Method
+        public abstract void CreateRooms();
+
+    }
+
+    class FiveLuxuryAndNormalRoom : Package
+    {
+        // Factory Method implementation
+        public override void CreateRooms()
+        {
+            for (int i = 0; i <= 4; i++)
+            { Rooms.Add(new LuxuryRoom()); }
+
+            for (int i = 0; i <= 4; i++)
+            { Rooms.Add(new NormalRoom()); }   
+        }
+    }
+
+    class TwentyNormalRoom : Package
+    {
+        // Factory Method implementation
+        public override void CreateRooms()
+        {
+            for (int i = 0; i <= 19; i++)
+                Rooms.Add(new NormalRoom());
+        }
+    }
+
     
+
+
     public abstract class Room
     {
-
-        private double discountPrice;
         
 
         protected IDisplayRoom myRoom;
@@ -78,7 +122,7 @@ namespace FirstApplication
 
     public class BudgetRoom : Room
     {
-        static public double price = 100.00;
+        public double price = 100.00;
         static public int available = 300;
 
         public BudgetRoom()
@@ -132,7 +176,7 @@ namespace FirstApplication
         public void CalculatePrice(int discount)
         {
             double cost = 0;
-            //some calculation here
+            
             Console.WriteLine("normal Calculate");
             
         }
@@ -145,7 +189,7 @@ namespace FirstApplication
         public void CalculatePrice(int discount)
         {
             double cost = 0;
-            //some calculation here
+                
             
         }
     }
@@ -155,6 +199,8 @@ namespace FirstApplication
         public void CalculatePrice(int discount)
         {
             double cost = 0;
+
+            
             Console.WriteLine("this is the custom discount");
 
             

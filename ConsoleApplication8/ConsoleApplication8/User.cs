@@ -15,7 +15,7 @@ namespace FirstApplication
     {
         private string name;
         private string password;
-        public  string Name
+        public string Name
         {
             get { return name; }
             set { name = value; }
@@ -29,17 +29,17 @@ namespace FirstApplication
 
         //Methods
         public bool ValidateInput()
-        {   
+        {
             //Text from textfield are added to the object variables    
             //Account stored in a file
-            name     = this.name.Trim();
+            name = this.name.Trim();
             password = this.password.Trim();
 
-            if ( name.Length>=3 && name.Length <= 20 && password.Length >= 7) 
+            if (name.Length >= 3 && name.Length <= 20 && password.Length >= 7)
             {
                 return true;
             }
-            else 
+            else
             {
                 Console.WriteLine("fields not correct");
                 return false;
@@ -68,11 +68,11 @@ namespace FirstApplication
                     while ((firststr = reader.ReadLine()) != null)
                     {
 
-                        
+
                         if (firststr == name)
                         {
                             secondstr = reader.ReadLine();
-                            
+
                             if (secondstr == password)
                             {
                                 return true;
@@ -89,13 +89,13 @@ namespace FirstApplication
                 Console.WriteLine(e.Message);
                 return false;
             }
-            
+
         }
         public void DisplayWelcome()
         {
             Console.WriteLine("welcome! {0}", this.name);
         }
-    
+
         public User()
         {
         }
@@ -120,11 +120,11 @@ namespace FirstApplication
                 user.Name = Console.ReadLine();
                 Console.WriteLine("please enter your desired password");
                 user.Password = Console.ReadLine();
-                
+
 
                 if (user.ValidateInput())
                     user.RegisterAccount();
-                
+
             }
             else
             {
@@ -137,41 +137,49 @@ namespace FirstApplication
                 else
                     Console.WriteLine("failedlogin");
             }
-            LuxuryRoom luxroom1    = new LuxuryRoom();
+            LuxuryRoom luxroom1 = new LuxuryRoom();
             NormalRoom normalroom1 = new NormalRoom();
             BudgetRoom budgetroom1 = new BudgetRoom();
-            List<Room> roomList = new List<Room>();
+            List<Room> showRoomList = new List<Room>();
             Console.WriteLine("Here are the rooms we have available");
-            foreach (Room room in roomList)
+            foreach (Room room in showRoomList)
             {
                 room.DoDisplay();
             }
-            roomList.Add(luxroom1);
-            roomList.Add(budgetroom1);
+            showRoomList.Add(luxroom1);
+            showRoomList.Add(budgetroom1);
             //change luxrom to customdiscount
             luxroom1.MyCalculate = new CustomDiscount();
 
-            
-            foreach(Room r in roomList)
+
+            foreach (Room r in showRoomList)
             {
                 r.DoDisplay();
-                r.DoCalculatePrice(90);
+            }
+
+            Console.WriteLine("Would you be interested in one of our Packages Like our bundle of 5 Luxury Rooms and 5 Normal Rooms for only half of its original price?");
+            Console.WriteLine("Y/N?");
+            temp = Console.ReadLine();
+            if (temp.ToUpper() == "Y")
+            {
+
+                Console.ReadKey();
+
+
+
 
             }
-            Console.ReadKey();
-
-
         }
-    }
-    //classes for File.exist for test 
-    public interface IFile
-    {
-        bool Exists(string fn);
-    }
+        //classes for File.exist for test 
+        public interface IFile
+        {
+            bool Exists(string fn);
+        }
 
-    public class FileImpl : IFile
-    {
-        public virtual bool Exists(string fn)
-        { return File.Exists(fn); }
+        public class FileImpl : IFile
+        {
+            public virtual bool Exists(string fn)
+            { return File.Exists(fn); }
+        }
     }
 }
