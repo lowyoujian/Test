@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace FirstApplication
 {
-    class Summary
+    public  class SummaryDisplay
     {
+        private List<Room> roomList = new List<Room>();
+
+        public void updateCurrent(List<Room> roomlist)
+        {
+            this.roomList = roomList.ToList();
+            Console.WriteLine("Update summary roomlist");
+
+        }
+
     }
 }

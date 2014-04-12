@@ -41,6 +41,7 @@ namespace FirstApplication
             }
             else 
             {
+                Console.WriteLine("fields not correct");
                 return false;
             }
         }
@@ -48,8 +49,9 @@ namespace FirstApplication
         {
             using (StreamWriter writer = new StreamWriter("Users.txt"))
             {
-                writer.Write(name);
-                writer.Write(string.Format("\n" + password + "\n"));
+                writer.Write(this.name);
+                writer.Write(string.Format("\n" + this.password + "\n"));
+                Console.WriteLine("register successfull");
             }
         }
         public bool Login()
@@ -106,23 +108,44 @@ namespace FirstApplication
     {
         static void Main(string[] args)
         {
-            User user     = new User();
-            user.Name     = "1234";
-            user.Password = "12345678";
-            if (user.ValidateInput())
+            string temp;
+
+            Console.WriteLine("Welcome to this hotel");
+            Console.WriteLine("Are you a new user?(Y/N)");
+            temp = Console.ReadLine();
+            User user = new User();
+            if (temp.ToUpper() == "Y")
             {
-                user.RegisterAccount();
+                Console.WriteLine("please enter your desired username");
+                user.Name = Console.ReadLine();
+                Console.WriteLine("please enter your desired password");
+                user.Password = Console.ReadLine();
+                
+
+                if (user.ValidateInput())
+                    user.RegisterAccount();
+                
             }
-            if (user.Login())
-                Console.WriteLine("success");
             else
-                Console.WriteLine("failed");
-            
+            {
+                Console.WriteLine("please enter username");
+                user.Name = Console.ReadLine();
+                Console.WriteLine("please enter password");
+                user.Password = Console.ReadLine();
+                if (user.Login())
+                    Console.WriteLine("successlogin");
+                else
+                    Console.WriteLine("failedlogin");
+            }
             LuxuryRoom luxroom1    = new LuxuryRoom();
             NormalRoom normalroom1 = new NormalRoom();
             BudgetRoom budgetroom1 = new BudgetRoom();
-
             List<Room> roomList = new List<Room>();
+            Console.WriteLine("Here are the rooms we have available");
+            foreach (Room room in roomList)
+            {
+                room.DoDisplay();
+            }
             roomList.Add(luxroom1);
             roomList.Add(budgetroom1);
             //change luxrom to customdiscount

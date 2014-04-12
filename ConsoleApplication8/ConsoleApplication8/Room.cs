@@ -53,9 +53,9 @@ namespace FirstApplication
 
     public class LuxuryRoom : Room
     {
-       
-        private double price;
 
+        static public double price = 300;
+        static public int available = 100;
         public LuxuryRoom()
         { 
             myRoom = new DisplayLuxuryRoom();
@@ -66,9 +66,9 @@ namespace FirstApplication
 
     public class NormalRoom : Room
     {
-        
-         private double price=200.00;     
 
+        static public double price = 200.00;
+        static public int available = 200;
         public NormalRoom()
         { 
             myRoom = new DisplayNormalRoom();
@@ -79,7 +79,8 @@ namespace FirstApplication
 
     public class BudgetRoom : Room
     {
-         private double price=100.00;
+        static public double price = 100.00;
+        static public int available = 300;
 
         public BudgetRoom()
         {
@@ -94,7 +95,9 @@ namespace FirstApplication
         public void DisplayRoomInfo()
         {
             // Code to show luxury room
-            Console.WriteLine("luxury room");
+            Console.Write("luxury room\t");
+            Console.WriteLine("Price : {0} \tRooms available :{1}",LuxuryRoom.price, LuxuryRoom.available);
+
         }
     }
 
