@@ -19,9 +19,8 @@ namespace FirstApplication
     public abstract class Room
     {
 
-        private double price;
         private double discountPrice;
-        private int available;
+        
 
         protected IDisplayRoom myRoom;
         protected ICalculatePrice myCalculate;
@@ -55,7 +54,7 @@ namespace FirstApplication
     {
 
         static public double price = 300;
-        static public int available = 100;
+        static public double available = 100;
         public LuxuryRoom()
         { 
             myRoom = new DisplayLuxuryRoom();

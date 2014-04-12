@@ -91,9 +91,9 @@ namespace FirstApplication
             }
             
         }
-        public void DisplayWelcome(bool value)
+        public void DisplayWelcome()
         {
-            //TODO Welcome user
+            Console.WriteLine("welcome! {0}", this.name);
         }
     
         public User()
@@ -133,7 +133,7 @@ namespace FirstApplication
                 Console.WriteLine("please enter password");
                 user.Password = Console.ReadLine();
                 if (user.Login())
-                    Console.WriteLine("successlogin");
+                    user.DisplayWelcome();
                 else
                     Console.WriteLine("failedlogin");
             }
