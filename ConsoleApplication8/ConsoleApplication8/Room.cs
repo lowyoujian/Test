@@ -15,6 +15,8 @@ namespace FirstApplication
     {
         void CalculatePrice(int discount);
     }
+    
+    
 
     abstract class Package
     {
@@ -62,9 +64,21 @@ namespace FirstApplication
     
 
 
-    public abstract class Room
+    public class Room
     {
+        public Room()
+        {
+        }
+
+        public Room(IDisplayRoom myRoom)
+        {
+            this.myRoom = myRoom;
+        }
         
+        public Room(ICalculatePrice myCalculate)
+        {
+            this.myCalculate = myCalculate;
+        }
 
         protected IDisplayRoom myRoom;
         protected ICalculatePrice myCalculate;
