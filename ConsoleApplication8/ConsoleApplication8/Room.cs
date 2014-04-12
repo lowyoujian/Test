@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FirstApplication
+namespace Rooms
 {
     public interface IDisplayRoom
     {
@@ -66,6 +66,12 @@ namespace FirstApplication
 
     public class Room
     {
+        /* need Main to build solution
+        static void Main(string[] args)
+        {
+        }
+        */
+        
         public Room()
         {
         }
