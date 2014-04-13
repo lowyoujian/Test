@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace FirstApplication
 {
@@ -33,8 +34,8 @@ namespace FirstApplication
         // Factory Method implementation
         public override void CreateRooms()
         {
-            
-            
+
+
             Rooms.Add(new LuxuryRoom());
             Rooms.Add(new LuxuryRoom());
             Rooms.Add(new LuxuryRoom());
@@ -47,11 +48,6 @@ namespace FirstApplication
             Rooms.Add(new NormalRoom());
             Rooms.Add(new NormalRoom());
             Rooms.Add(new NormalRoom());
-<<<<<<< HEAD
-            
-            
-=======
->>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
         }
     }
 

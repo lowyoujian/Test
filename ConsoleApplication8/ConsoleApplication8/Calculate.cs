@@ -23,10 +23,10 @@ namespace FirstApplication
             return discountedPrice;
         }
 
-       public double CalculatePrice(double normalprice, int discount)
-       {
-        return normalprice;
-       }
+        public double CalculatePrice(double normalprice, int discount)
+        {
+            return normalprice;
+        }
     }
 
     public class NormalCalculate : ICalculatePrice
@@ -53,11 +53,7 @@ namespace FirstApplication
         public double CalculatePrice(double normalPrice)
         {
             double discountedPrice;
-<<<<<<< HEAD
-            discountedPrice = normalPrice * ((100 - 50) / 100);
-=======
             discountedPrice = normalPrice * ((100 - 30) / 100);
->>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
             Console.WriteLine("this is the public holiday discount");
 
             return discountedPrice;

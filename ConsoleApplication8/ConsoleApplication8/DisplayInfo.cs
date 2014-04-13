@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace FirstApplication
 {
+    public interface IDisplayRoom
+    {
+        void DisplayRoomInfo();
+    }
     public class DisplayLuxuryRoom : IDisplayRoom
     {
         public void DisplayRoomInfo()

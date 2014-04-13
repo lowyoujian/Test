@@ -34,13 +34,10 @@ namespace FirstApplication
 
         public void CalculateTotalPrice()
         {
-<<<<<<< HEAD
+
             foreach (Room room in this.RoomList)
-=======
-            foreach (Room room in RoomList)
->>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
             {
-                this.totalPrice += room.DiscountPrice*days;
+                totalPrice += room.DiscountPrice*days;
             }
 
         }
