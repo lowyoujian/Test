@@ -20,7 +20,10 @@ namespace FirstApplication
         {
         }
         */
+<<<<<<< HEAD
         public string type = "luxury room"; 
+=======
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
         private double price;
         protected double discountPrice;
         protected IDisplayRoom myRoom;
@@ -64,6 +67,7 @@ namespace FirstApplication
             return discountprice;
         }
         public double DoCalculatePrice(double normalPrice)
+<<<<<<< HEAD
         {
             double discountprice;
             discountprice = myCalculate.CalculatePrice(normalPrice);
@@ -81,6 +85,25 @@ namespace FirstApplication
 
         public Room(IDisplayRoom myRoom)
         {
+=======
+        {
+            double discountprice;
+            discountprice = myCalculate.CalculatePrice(normalPrice);
+            return discountprice;
+        }
+
+        public Room(ICalculatePrice myCalculate)
+        {
+            this.myCalculate = myCalculate;
+        }
+
+        public Room()
+        {
+        }
+
+        public Room(IDisplayRoom myRoom)
+        {
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
             this.myRoom = myRoom;
         }
     }
@@ -89,7 +112,11 @@ namespace FirstApplication
 
     public class LuxuryRoom : Room
     {
+<<<<<<< HEAD
         public string type = "luxury room";
+=======
+
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
         public static double shownPrice = 300;
         static public double available  = 100 + 1; // one object created for display
         public LuxuryRoom()
@@ -103,7 +130,10 @@ namespace FirstApplication
 
     public class NormalRoom : Room
     {
+<<<<<<< HEAD
         public string type = "luxury room";
+=======
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
         public static double shownPrice = 200;
         public double price = 200.00;
         static public int available = 200 + 1; // one object created for display
@@ -117,7 +147,10 @@ namespace FirstApplication
 
     public class BudgetRoom : Room
     {
+<<<<<<< HEAD
         public string type = "luxury room";
+=======
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
         public static double shownPrice = 100;
         public double price = 100.00;
         static public int available = 300 + 1; // one object created for display

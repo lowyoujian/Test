@@ -76,8 +76,13 @@ namespace FirstApplication
             
         public static void DisplayRoom()
         {
+<<<<<<< HEAD
 		string temp2;
                 string temp3;
+=======
+		string temp;
+                
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
                 
                 /* 
                 LuxuryRoom luxroom1 = new LuxuryRoom();
@@ -104,8 +109,13 @@ namespace FirstApplication
                 Reservation reservation1 = new Reservation();
                 Console.WriteLine("Would you be interested in one of our Packages like our bundle of 5 Luxury Rooms and 5 Normal Rooms for only half of its original price?");
                 Console.WriteLine("Y/N?");
+<<<<<<< HEAD
                 temp2 = Console.ReadLine();
                 if (temp2.ToUpper() == "Y")
+=======
+                temp = Console.ReadLine();
+                if (temp.ToUpper() == "Y")
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
                 {   
                     // Constructors call Factory method
                     Package[] packages = new Package[2];
@@ -115,8 +125,13 @@ namespace FirstApplication
                 
                     Console.WriteLine("1) FiveLuxuryAndNormalRoom \n 2)TwentyNormalRoom \n 3) back");
                     Console.WriteLine("choose 1");
+<<<<<<< HEAD
                     temp3 = Console.ReadLine();
                     if(temp3 == "1")
+=======
+                    temp = Console.ReadLine();
+                    if(temp == "1")
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
                     {
                     // Calling Factory CreateRoom Method Method
                         foreach (Room room in packages[0].Rooms)
@@ -126,13 +141,18 @@ namespace FirstApplication
                         reservation1.RoomList.Concat(packages[0].Rooms);
                         Selection();
                     }
+<<<<<<< HEAD
                     else if (temp3 == "2")
+=======
+                    else if (temp == "2")
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
                     {
                         reservation1.RoomList.AddRange(packages[1].Rooms);
                         Selection();
                     }
                 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             }
             Reservation reservation1 = new Reservation();
@@ -165,6 +185,11 @@ namespace FirstApplication
 
             Console.ReadKey();
 >>>>>>> 5c776bf151fce90d55438efe6c174b3908700d00
+=======
+            reservation1.CalculateTotalPrice();
+
+            Console.ReadKey();
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
 
         }
         
@@ -185,12 +210,16 @@ namespace FirstApplication
                 foreach (Room room in showRoomList)
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     
                     reservation1.RoomList.AddRange(packages[1].Rooms);
 
 =======
                     room.DoDisplay();
 >>>>>>> 5c776bf151fce90d55438efe6c174b3908700d00
+=======
+                    room.DoDisplay();
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
                 }
                 showRoomList.Add(luxroom1);
                 showRoomList.Add(budgetroom1);
@@ -211,6 +240,7 @@ namespace FirstApplication
                 //Proceed to receipt
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
             reservation1.CalculateTotalPrice();
             Console.WriteLine(reservation1.TotalPrice);
 
@@ -220,6 +250,8 @@ namespace FirstApplication
 
 =======
 >>>>>>> 5c776bf151fce90d55438efe6c174b3908700d00
+=======
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
         }
 
     }
