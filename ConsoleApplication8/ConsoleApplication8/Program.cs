@@ -79,15 +79,16 @@ namespace FirstApplication
         static void Main(string[] args)
         {
             string choice;
+            User user = new User(); // Create new User
             Console.WriteLine("Welcome to this hotel");
             Console.WriteLine("Are you a new user?(Y/N)");
             choice = Console.ReadLine();
             while (choice.ToUpper() != "Y" || choice.ToUpper() != "N")
             {
                 if (choice.ToUpper() == "Y")
-                { Menu.NewUser();}
+                { Menu.NewUser(user);}
                 else if (choice.ToUpper() == "N")
-                {Menu.AlreadyUser();   }
+                {Menu.AlreadyUser(user);   }
                 else
                 {
                     Console.WriteLine("Invalid input. Please try again. Y/N ?");
@@ -155,10 +156,9 @@ namespace FirstApplication
             }
         }
 
-        public static void NewUser()
+        public static void NewUser(User user)
         {
             bool valid = true ;
-            User user = new User();
             do
             {
                 Console.WriteLine("Please enter your desired username. (must contain at least 3 and max of 20 characters");
@@ -184,10 +184,9 @@ namespace FirstApplication
 
 
         }
-        public static void AlreadyUser()
+        public static void AlreadyUser(User user)
         {
-            {
-                User user = new User();
+            {  
                 Console.WriteLine("please enter username");
                 user.Name = Console.ReadLine();
                 Console.WriteLine("please enter password");
@@ -200,8 +199,6 @@ namespace FirstApplication
 
             }
         }
-
-
 
         public static void DisplayRoom()
         {
