@@ -13,8 +13,16 @@ namespace FirstApplication
 {
     public class User
     {
+        private List<Room> roomList = new List<Room>();
+
         private string name;
         private string password;
+
+        public List<Room> RoomList
+        {
+            get { return roomList; }
+            set { roomList = value; }
+        }
         public string Name
         {
             get { return name; }
@@ -160,7 +168,7 @@ namespace FirstApplication
 
             }
 
-            Console.WriteLine("Would you be interested in one of our Packages Like our bundle of 5 Luxury Rooms and 5 Normal Rooms for only half of its original price?");
+            Console.WriteLine("Would you be interested in one of our Packages like our bundle of 5 Luxury Rooms and 5 Normal Rooms for only half of its original price?");
             Console.WriteLine("Y/N?");
             temp = Console.ReadLine();
             if (temp.ToUpper() == "Y")
@@ -168,17 +176,28 @@ namespace FirstApplication
                 Package[] packages = new Package[2];
 
                 packages[0] = new FiveLuxuryAndNormalRoom();
-
                 packages[1] = new TwentyNormalRoom();
 
-            }
+                Console.WriteLine("1) FiveLuxuryAndNormalRoom \n 2)TwentyNormalRoom \n 3) back");
+                Console.WriteLine("choose 1");
+                temp = Console.ReadLine();
+                if (temp == "1")
+                {
+                    // Calling Factory Method
+                    packages[0].CreateRooms();
+                    user.RoomList.AddRange(packages[0].Rooms);
+                }
+                if (temp == "2")
+                {
+                    packages[1].CreateRooms();
+                    packages[1].CreateRooms();
+                    user.RoomList.AddRange(packages[1].Rooms);
+                }
 
-            
+
+            }
               
                 Console.ReadKey();
-
-
-
 
             }
         }
