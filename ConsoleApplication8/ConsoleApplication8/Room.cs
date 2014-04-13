@@ -82,9 +82,14 @@ namespace FirstApplication
 
     public class LuxuryRoom : Room
     {
-
+        private string roomType = "Luxury Room";
         public static double shownPrice = 300;
         static public double available = 100 + 1; // one object created for display
+        public string RoomType
+        {
+            get { return roomType; }
+            set { roomType = value; }
+        }
         public LuxuryRoom()
         {
             myRoom = new DisplayLuxuryRoom();
@@ -96,9 +101,15 @@ namespace FirstApplication
 
     public class NormalRoom : Room
     {
+        private string roomType = "Normal Room";
         public static double shownPrice = 200;
         public double price = 200.00;
         static public int available = 200 + 1; // one object created for display
+        public string RoomType
+        {
+            get { return roomType; }
+            set { roomType = value; }
+        }
         public NormalRoom()
         {
             myRoom = new DisplayNormalRoom();
@@ -109,10 +120,15 @@ namespace FirstApplication
 
     public class BudgetRoom : Room
     {
+        private string roomType = "Budget Room";
         public static double shownPrice = 100;
         public double price = 100.00;
         static public int available = 300 + 1; // one object created for display
-
+        public string RoomType
+        {
+            get { return roomType; }
+            set { roomType = value; }
+        }
         public BudgetRoom()
         {
             myRoom = new DisplayBudgetRoom();

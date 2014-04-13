@@ -58,11 +58,9 @@ namespace FirstApplication
                 Console.WriteLine("register successfull");
             }
         }
-        public bool Login()
+        public bool LoginCheck()
         {
 
-            this.name = "1234";
-            this.password = "12345678";
             string firststr;
             string secondstr;
             try
@@ -100,6 +98,50 @@ namespace FirstApplication
             Console.WriteLine("welcome! {0}", this.name);
         }
 
+
+        public  void NewUser()
+        {
+            bool valid = true;
+            do
+            {
+                Console.WriteLine("Please enter your desired username. (must contain at least 3 and max of 20 characters");
+                this.Name = Console.ReadLine();
+                Console.WriteLine("Please enter your desired password. (must contain at least 7 characters)");
+                this.Password = Console.ReadLine();
+                Console.WriteLine("");
+                valid = this.ValidateInput();// Returns false if doesn't meet criteria
+                if (valid)
+                {
+                    this.RegisterAccount();
+                    Console.WriteLine("You are now logged in");
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Username or password do not match criteria. Please try again.");
+                }
+            } while (valid == false);
+
+
+        }
+        public void AlreadyUser()
+        {
+            {
+                Console.WriteLine("please enter username");
+                this.Name = Console.ReadLine();
+                Console.WriteLine("please enter password");
+                this.Password = Console.ReadLine();
+                if (this.LoginCheck())
+                    this.DisplayWelcome();
+                else
+                    Console.WriteLine("failedlogin");
+
+
+            }
+        }
         public User()
         {
         }

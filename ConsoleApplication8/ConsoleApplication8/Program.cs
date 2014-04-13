@@ -10,98 +10,102 @@ namespace FirstApplication
     public class Program
     {
 
-        public class Room
-        {
-            
-            private double price;
-            protected double discountPrice;
-            protected IDisplayRoom myRoom;
-            protected ICalculatePrice myCalculate;
-
-
-            public double DiscountPrice
-            {
-                get { return discountPrice; }
-                set { discountPrice = value; }
-            }
-
-            public double Price
-            {
-                get { return price; }
-                set { price = value; }
-            }
-
-            public ICalculatePrice MyCalculate
-            {
-                get { return myCalculate; }
-                set { myCalculate = value; }
-            }
-
-
-            public IDisplayRoom MyRoom
-            {
-                get { return myRoom; }
-                set { myRoom = value; }
-            }
-
-            public void DoDisplay()
-            {
-                myRoom.DisplayRoomInfo();
-            }
-            // Overloaded DoCalculatePrice
-            public double DoCalculatePrice(double normalPrice, int discount)
-            {
-                double discountprice;
-                discountprice = myCalculate.CalculatePrice(normalPrice, discount);
-                return discountprice;
-            }
-            public double DoCalculatePrice(double normalPrice)
-            {
-                double discountprice;
-                discountprice = myCalculate.CalculatePrice(normalPrice);
-                return discountprice;
-            }
-
-            public Room(ICalculatePrice myCalculate)
-            {
-                this.myCalculate = myCalculate;
-            }
-
-            public Room()
-            {
-            }
-
-            public Room(IDisplayRoom myRoom)
-            {
-                this.myRoom = myRoom;
-            }
-        }
         static void Main(string[] args)
         {
             string choice;
+            int i = 1;
+            bool valid = true;
             User user = new User(); // Create new User
+            Reservation reservation1 = new Reservation();
             Console.WriteLine("Welcome to this hotel");
-            Console.WriteLine("Are you a new user?(Y/N)");
-            choice = Console.ReadLine();
-            while (choice.ToUpper() != "Y" || choice.ToUpper() != "N")
+            do
             {
-                if (choice.ToUpper() == "Y")
-                { Menu.NewUser(user);}
-                else if (choice.ToUpper() == "N")
-                {Menu.AlreadyUser(user);   }
-                else
+                Console.WriteLine("Are you a new user?(Y/N)");
+                choice = Console.ReadLine();
+                choice = choice.ToUpper();
+                valid = Validate.ValidateYesOrNo(choice);
+                
+                    if (choice == "Y")
+                    { user.NewUser();}
+                    else if (choice == "N")
+                    { user.AlreadyUser(); }
+
+            } while (valid == false);
+
+            LuxuryRoom luxroom1 = new LuxuryRoom();
+            NormalRoom normalroom1 = new NormalRoom();
+            BudgetRoom budgetroom1 = new BudgetRoom();
+            List<Room> showRoomList = new List<Room>();
+
+            showRoomList.Add(luxroom1);
+            showRoomList.Add(normalroom1);
+            showRoomList.Add(budgetroom1);
+            Console.WriteLine("Here are the rooms we have available");
+
+            foreach (Room room in showRoomList)
+            {
+                Console.Write("{0} ",i++);// Numbering of room
+                room.DoDisplay();
+            }
+         
+            do
+            {
+                Console.WriteLine("Please Choose the Room you want to book (1/2/3)");
+                choice = Console.ReadLine();
+                valid = Validate.ValidateYesOrNo(choice);
+                if (valid)
                 {
-                    Console.WriteLine("Invalid input. Please try again. Y/N ?");
-                    choice = Console.ReadLine();
+                    if ( choice == "Y")
+                    {
+                        //TODO validate data
+                        if (choice == "1")
+                        {
+                            reservation1.RoomList.Add(new LuxuryRoom());
+                        }
+                        if (choice == "2")
+                        {
+                            reservation1.RoomList.Add(new NormalRoom());
+                        }
+                        if (choice == "3")
+                        {
+                            reservation1.RoomList.Add(new BudgetRoom());
+                        }
+
+                        //TODO ask again after choosing room
+
+                    }
+                    else if (choice == "N")
+                    {
+                        // TODO nothing
+                    }
+                }
+                    
+
+                
+                {
+                    //Proceed to receipt
                 }
             }
-            Menu.DisplayRoom();
+
+            
+            Menu.DisplayRoom(reservation1);
 
             Console.ReadKey();
         }
     }
 
+    public class Validate
+    {
+        public static bool ValidateYesOrNo(string str)
+        {
+            str = str.ToUpper();
+            if (str == "Y" || str == "N")
+            { return true; }
+            else
+            { return false; }
+        }
 
+    }
     // Interfaces needed to mock Files system in System.IO
     public interface IFile
     {
@@ -114,98 +118,14 @@ namespace FirstApplication
         { return File.Exists(fn); }
     }
 
-    public class Menu
-    {
-        public static void Selection()
-        {
-            string selection;
-            Console.WriteLine("Do you want to add more rooms? Y/N");
-            selection = Console.ReadLine();
+  
+       
 
-            if (selection.ToUpper() == "Y")
-            {
-                //Back to Room Menus
-                Console.Clear();
-                LuxuryRoom luxroom1 = new LuxuryRoom();
-                NormalRoom normalroom1 = new NormalRoom();
-                BudgetRoom budgetroom1 = new BudgetRoom();
-                List<Room> showRoomList = new List<Room>();
-
-                Console.WriteLine("Here are the rooms we have available");
-                foreach (Room room in showRoomList)// Display rooms with price
-                {
-                    room.DoDisplay();
-                }
-                showRoomList.Add(luxroom1);
-                showRoomList.Add(budgetroom1);
-                //change luxrom to customdiscount
-                luxroom1.MyCalculate = new CustomDiscount();
-
-
-                foreach (Room r in showRoomList)
-                {
-                    r.DoDisplay();
-                    r.DiscountPrice = r.DoCalculatePrice(r.Price, 90);
-                }
-                Console.ReadKey();
-
-            }
-            else if (selection.ToUpper() == "N")
-            {
-                //Proceed to receipt
-            }
-        }
-
-        public static void NewUser(User user)
-        {
-            bool valid = true ;
-            do
-            {
-                Console.WriteLine("Please enter your desired username. (must contain at least 3 and max of 20 characters");
-                user.Name = Console.ReadLine();
-                Console.WriteLine("Please enter your desired password. (must contain at least 7 characters)");
-                user.Password = Console.ReadLine();
-                Console.WriteLine("");
-                valid = user.ValidateInput();// Returns false if doesn't meet criteria
-                if (valid)
-                {
-                    user.RegisterAccount();
-                    Console.WriteLine("You are now logged in");
-                    Console.WriteLine("Press any key to continue");
-                    Console.ReadKey();
-                    Console.Clear();
-                }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine("Username or password do not match criteria. Please try again.");
-                }
-            } while (valid == false ); 
-
-
-        }
-        public static void AlreadyUser(User user)
-        {
-            {  
-                Console.WriteLine("please enter username");
-                user.Name = Console.ReadLine();
-                Console.WriteLine("please enter password");
-                user.Password = Console.ReadLine();
-                if (user.Login())
-                    user.DisplayWelcome();
-                else
-                    Console.WriteLine("failedlogin");
-
-
-            }
-        }
-
-        public static void DisplayRoom()
+        public static void DisplayRoom(Reservation reservation1)
         {
             string choice;
 
 
-            Reservation reservation1 = new Reservation();
             Console.WriteLine("Would you be interested in one of our Packages like our bundle of 5 Luxury Rooms and 5 Normal Rooms for only half of its original price?");
             Console.WriteLine("Y/N?");
             choice = Console.ReadLine();
@@ -240,27 +160,10 @@ namespace FirstApplication
 
             else if (choice.ToUpper() == "N")
             {
-                LuxuryRoom luxroom1 = new LuxuryRoom();
-                NormalRoom normalroom1 = new NormalRoom();
-                BudgetRoom budgetroom1 = new BudgetRoom();
-                List<Room> showRoomList = new List<Room>();
-                Console.WriteLine("Here are the rooms we have available");
-                foreach (Room room in showRoomList)
-                {
-                    room.DoDisplay();
-                }
-                showRoomList.Add(luxroom1);
-                showRoomList.Add(budgetroom1);
-                //change luxrom to customdiscount
-                luxroom1.MyCalculate = new CustomDiscount();
+                
 
 
-                foreach (Room r in showRoomList)
-                {
-                    r.DoDisplay();
-                    r.DiscountPrice = r.DoCalculatePrice(r.Price, 90);
-
-                }
+                
             }
             reservation1.CalculateTotalPrice();
             Console.ReadKey();
