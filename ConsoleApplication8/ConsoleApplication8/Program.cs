@@ -165,6 +165,7 @@ namespace FirstApplication
                 packages[0] = new FiveLuxuryAndNormalRoom();
                 packages[1] = new TwentyNormalRoom();
                 reservation1.RoomList = new List<Room>();
+                
 
                 Console.WriteLine("1) FiveLuxuryAndNormalRoom \n 2)TwentyNormalRoom \n 3) back");
                 Console.WriteLine("choose 1");
@@ -177,13 +178,18 @@ namespace FirstApplication
                         room.MyCalculate = new PublicHolidayCalculate();
                     }
                     reservation1.RoomList.Concat(packages[0].Rooms);
-                    Selection();
+                    
                 }
                 if (choice == "2")
                 {
                     reservation1.RoomList.AddRange(packages[1].Rooms);
-                    Selection();
+                    
                 }
+                
+                Console.WriteLine("How many days would you like to book for?");
+                reservation1.Days=Console.ReadLine();
+                
+                
             }
 
             else if (choice.ToUpper() == "N")
