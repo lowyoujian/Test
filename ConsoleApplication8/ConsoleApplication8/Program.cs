@@ -180,7 +180,7 @@ namespace FirstApplication
                     Console.Clear();
                     Console.WriteLine("Username or password do not match criteria. Please try again.");
                 }
-            } while (!valid );
+            } while (valid == false ); 
 
 
         }
