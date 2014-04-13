@@ -12,11 +12,7 @@ namespace FirstApplication
 
         public class Room
         {
-            /* need Main to build solution
-    static void Main(string[] args)
-    {
-    }
-    */
+            
             private double price;
             protected double discountPrice;
             protected IDisplayRoom myRoom;
@@ -90,13 +86,13 @@ namespace FirstApplication
             {
                 if (temp.ToUpper() == "Y")
                 {
-                    Option.NewUser();
-                    Option.DisplayRoom();
+                    Menu.NewUser();
+                    Menu.DisplayRoom();
                 }
                 else if (temp.ToUpper() == "N")
                 {
-                    Option.AlreadyUser();
-                    Option.DisplayRoom();
+                    Menu.AlreadyUser();
+                    Menu.DisplayRoom();
                 }
                 else
                 {
@@ -110,8 +106,19 @@ namespace FirstApplication
     }
 
 
+    // Interfaces needed to mock Files system in System.IO
+    public interface IFile
+    {
+        bool Exists(string fn);
+    }
 
-    public class Option
+    public class FileImpl : IFile
+    {
+        public virtual bool Exists(string fn)
+        { return File.Exists(fn); }
+    }
+
+    public class Menu
     {
         public static void Selection()
         {
@@ -121,7 +128,7 @@ namespace FirstApplication
 
             if (selection.ToUpper() == "Y")
             {
-                //Back to Room Options
+                //Back to Room Menus
                 Console.Clear();
                 LuxuryRoom luxroom1 = new LuxuryRoom();
                 NormalRoom normalroom1 = new NormalRoom();
@@ -260,16 +267,7 @@ namespace FirstApplication
         }
     }
 
-    public interface IFile
-    {
-        bool Exists(string fn);
-    }
-
-    public class FileImpl : IFile
-    {
-        public virtual bool Exists(string fn)
-        { return File.Exists(fn); }
-    }
+    
 
 
 }
