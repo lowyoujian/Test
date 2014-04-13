@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Class1Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsoleApplication8\FirstApplication.csproj">

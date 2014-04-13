@@ -108,6 +108,7 @@ namespace FirstApplication
     {
         static void Main(string[] args)
         {
+            
             string temp;
 
             Console.WriteLine("Welcome to this hotel");
@@ -155,6 +156,8 @@ namespace FirstApplication
             foreach (Room r in showRoomList)
             {
                 r.DoDisplay();
+                r.DoCalculatePrice();
+
             }
 
             Console.WriteLine("Would you be interested in one of our Packages Like our bundle of 5 Luxury Rooms and 5 Normal Rooms for only half of its original price?");
@@ -162,7 +165,16 @@ namespace FirstApplication
             temp = Console.ReadLine();
             if (temp.ToUpper() == "Y")
             {
+                Package[] packages = new Package[2];
 
+                packages[0] = new FiveLuxuryAndNormalRoom();
+
+                packages[1] = new TwentyNormalRoom();
+
+            }
+
+            
+              
                 Console.ReadKey();
 
 
@@ -182,4 +194,4 @@ namespace FirstApplication
             { return File.Exists(fn); }
         }
     }
-}
+

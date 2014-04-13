@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rooms
+namespace FirstApplication
 {
     public interface IDisplayRoom
     {
@@ -18,7 +18,7 @@ namespace Rooms
     
     
 
-    abstract class Package
+    public abstract class Package
     {
         private List<Room> _rooms = new List<Room>();
 
@@ -227,9 +227,4 @@ namespace Rooms
         }
         
     }
-
-
-
-
-
 }
