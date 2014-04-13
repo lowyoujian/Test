@@ -121,10 +121,12 @@ namespace FirstApplication
                         room.MyCalculate = new PublicHolidayCalculate();
                         }
                         reservation1.RoomList.Concat(packages[0].Rooms);
+                        Selection();
                     }
                     else if (temp3 == "2")
                     {
                         reservation1.RoomList.AddRange(packages[1].Rooms);
+                        Selection();
                     }
                 }
 
@@ -132,6 +134,44 @@ namespace FirstApplication
 
             Console.ReadKey();
 
+        }
+        
+        public static void Selection()
+        {
+            string selection;
+            Console.WriteLine("Do you want to add more rooms? Y/N");
+            selection = Console.ReadLine();
+            if(selection.ToUpper() == "Y")
+            {
+                //Back to Room Options
+                Console.Clear();
+                LuxuryRoom luxroom1 = new LuxuryRoom();
+                NormalRoom normalroom1 = new NormalRoom();
+                BudgetRoom budgetroom1 = new BudgetRoom();
+                List<Room> showRoomList = new List<Room>();
+                Console.WriteLine("Here are the rooms we have available");
+                foreach (Room room in showRoomList)
+                {
+                    room.DoDisplay();
+                }
+                showRoomList.Add(luxroom1);
+                showRoomList.Add(budgetroom1);
+                //change luxrom to customdiscount
+                luxroom1.MyCalculate = new CustomDiscount();
+
+
+                foreach (Room r in showRoomList)
+                {
+                    r.DoDisplay();
+                    r.DiscountPrice = r.DoCalculatePrice(r.Price, 90);
+               }
+                 Console.ReadKey();
+                
+            }
+            else if(selection.ToUpper() == "N")
+            {
+                //Proceed to receipt
+            }
         }
 
     }
