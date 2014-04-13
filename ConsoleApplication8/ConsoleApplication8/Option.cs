@@ -1,8 +1,32 @@
  public class Option
     {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+        public static bool UserLogin()
+        {
+            string temp;            
+            Console.WriteLine("Welcome to this hotel");
+            Console.WriteLine("Are you a new user?(Y/N)");
+            temp = Console.ReadLine();
+            User user = new User();
+            if (temp.ToUpper() == "Y")
+            {
+=======
         public static void NewUser()
         {
                 User user = new User();
+>>>>>>> 589882458299e0862bfae3ca2f293fc8e1a38a27
+=======
+        public static void NewUser()
+        {
+                User user = new User();
+>>>>>>> 5c776bf151fce90d55438efe6c174b3908700d00
+=======
+        public static void NewUser()
+        {
+                User user = new User();
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
                 Console.WriteLine("Please enter your desired username");
                 user.Name = Console.ReadLine();
                 Console.WriteLine("Please enter your desired password");
@@ -16,6 +40,32 @@
                     Console.ReadKey();
                     Console.Clear();
                 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+                return true;
+                
+            }
+            else 
+            {
+                Console.WriteLine("please enter username");
+                user.Name = Console.ReadLine();
+                Console.WriteLine("please enter password");
+                user.Password = Console.ReadLine();
+                if (user.Login())
+                    user.DisplayWelcome();
+                else
+                    Console.WriteLine("failedlogin");
+                return false;
+            }
+
+
+        }
+=======
+=======
+>>>>>>> 5c776bf151fce90d55438efe6c174b3908700d00
+=======
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
                 
                 
             
@@ -39,6 +89,13 @@
 
 
         
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 589882458299e0862bfae3ca2f293fc8e1a38a27
+=======
+>>>>>>> 5c776bf151fce90d55438efe6c174b3908700d00
+=======
+>>>>>>> 5c671ac35043f3aaab73e8b45dbc4e4e47d5ea2b
 
         public static void DisplayRoom()
         {
