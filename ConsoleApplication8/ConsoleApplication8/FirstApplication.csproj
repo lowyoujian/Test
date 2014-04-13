@@ -59,9 +59,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculate.cs" />
+    <Compile Include="Package.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Reservation.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Class2.cs" />
-    <Compile Include="Receipt.cs" />
+    <Compile Include="DisplayInfo.cs" />
     <Compile Include="Summary.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
