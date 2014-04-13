@@ -76,7 +76,7 @@ namespace FirstApplication
             
         public static void DisplayRoom()
         {
-		        string temp2;
+		string temp2;
                 string temp3;
                 LuxuryRoom luxroom1 = new LuxuryRoom();
                 NormalRoom normalroom1 = new NormalRoom();
