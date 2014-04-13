@@ -156,7 +156,7 @@ namespace FirstApplication
             foreach (Room r in showRoomList)
             {
                 r.DoDisplay();
-                r.DoCalculatePrice();
+                r.DiscountPrice=r.DoCalculatePrice(r.Price,90);
 
             }
 

@@ -13,7 +13,8 @@ namespace FirstApplication
 
     public interface ICalculatePrice
     {
-        void CalculatePrice(int discount);
+        double CalculatePrice(double normalprice,int discount);
+        double CalculatePrice(double normalprice);
     }
     
     
@@ -36,9 +37,10 @@ namespace FirstApplication
         // Factory Method
         public abstract void CreateRooms();
 
+
     }
 
-    class FiveLuxuryAndNormalRoom : Package
+    public class FiveLuxuryAndNormalRoom : Package
     {
         // Factory Method implementation
         public override void CreateRooms()
@@ -51,7 +53,7 @@ namespace FirstApplication
         }
     }
 
-    class TwentyNormalRoom : Package
+    public class TwentyNormalRoom : Package
     {
         // Factory Method implementation
         public override void CreateRooms()
@@ -71,23 +73,23 @@ namespace FirstApplication
         {
         }
         */
-        
-        public Room()
-        {
-        }
-
-        public Room(IDisplayRoom myRoom)
-        {
-            this.myRoom = myRoom;
-        }
-        
-        public Room(ICalculatePrice myCalculate)
-        {
-            this.myCalculate = myCalculate;
-        }
-
+        private double price;
+        protected double discountPrice;
         protected IDisplayRoom myRoom;
         protected ICalculatePrice myCalculate;
+
+
+        public double DiscountPrice
+        {
+            get { return discountPrice; }
+            set { discountPrice = value; }
+        }
+
+        public double Price
+        {
+            get { return price; }
+            set { price = value; }
+        }
 
         public ICalculatePrice MyCalculate
         {
@@ -106,9 +108,32 @@ namespace FirstApplication
         {
             myRoom.DisplayRoomInfo();
         }
-        public void DoCalculatePrice(int discount)
+        // Overloaded DoCalculatePrice
+        public double DoCalculatePrice(double normalPrice,int discount)
         {
-            myCalculate.CalculatePrice(discount);
+            double discountprice;
+            discountprice = myCalculate.CalculatePrice(normalPrice,discount);
+            return discountprice;
+        }
+        public double DoCalculatePrice(double normalPrice)
+        {
+            double discountprice;
+            discountprice = myCalculate.CalculatePrice(normalPrice);
+            return discountprice;
+        }
+
+        public Room(ICalculatePrice myCalculate)
+        {
+            this.myCalculate = myCalculate;
+        }
+
+        public Room()
+        {
+        }
+
+        public Room(IDisplayRoom myRoom)
+        {
+            this.myRoom = myRoom;
         }
     }
 
@@ -117,31 +142,36 @@ namespace FirstApplication
     public class LuxuryRoom : Room
     {
 
-        static public double price = 300;
+        public static double shownPrice = 300;
         static public double available = 100;
         public LuxuryRoom()
         { 
             myRoom = new DisplayLuxuryRoom();
             myCalculate = new NormalCalculate();
+            available--;
             
         }
+        
+
     }
 
     public class NormalRoom : Room
     {
-
-        static public double price = 200.00;
+        public static double shownPrice = 200;
+        public double price = 200.00;
         static public int available = 200;
         public NormalRoom()
         { 
             myRoom = new DisplayNormalRoom();
             myCalculate = new NormalCalculate();
+            available--;
         }
 
     }
 
     public class BudgetRoom : Room
     {
+        public static double shownPrice = 100;
         public double price = 100.00;
         static public int available = 300;
 
@@ -149,6 +179,7 @@ namespace FirstApplication
         {
             myRoom = new DisplayBudgetRoom();
             myCalculate = new NormalCalculate();
+            available--;
         }
         
     }
@@ -159,7 +190,7 @@ namespace FirstApplication
         {
             // Code to show luxury room
             Console.Write("luxury room\t");
-            Console.WriteLine("Price : {0} \tRooms available :{1}",LuxuryRoom.price, LuxuryRoom.available);
+            Console.WriteLine("Price : {0} \tRooms available :{1}", LuxuryRoom.shownPrice, LuxuryRoom.available);
 
         }
     }
@@ -183,22 +214,25 @@ namespace FirstApplication
 
     public class SchoolHolidayCalculate : ICalculatePrice
     {
-        public void CalculatePrice(int discount)
+        public double CalculatePrice(double normalPrice)
         {
-            double cost =0;
-            //some calculation here
-            
+            double discountedPrice;
+            discountedPrice = normalPrice * ((100-20)/100);
+            Console.WriteLine("this is the school holiday discount");
+
+            return discountedPrice;
         }
     }
 
     public class NormalCalculate : ICalculatePrice
     {
-        public void CalculatePrice(int discount)
+        public double CalculatePrice(double normalPrice)
         {
-            double cost = 0;
-            
-            Console.WriteLine("normal Calculate");
-            
+            double discountedPrice;
+            discountedPrice = normalPrice * (100/100);
+            Console.WriteLine("this is the No discount");
+
+            return discountedPrice;
         }
     }
 
@@ -206,24 +240,25 @@ namespace FirstApplication
 
     public class PublicHolidayCalculate : ICalculatePrice
     {
-        public void CalculatePrice(int discount)
+        public double CalculatePrice(double normalPrice)
         {
-            double cost = 0;
-                
-            
+            double discountedPrice;
+            discountedPrice = normalPrice * ((100-30)/100);
+            Console.WriteLine("this is the public holiday discount");
+
+            return discountedPrice;
         }
     }
 
     public class CustomDiscount : ICalculatePrice
     {
-        public void CalculatePrice(int discount)
+        public double CalculatePrice(double normalPrice,int discount)
         {
-            double cost = 0;
-
-            
+            double discountedPrice;
+            discountedPrice = normalPrice * ((100-discount)/100);
             Console.WriteLine("this is the custom discount");
 
-            
+            return discountedPrice;
         }
         
     }
