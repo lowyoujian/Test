@@ -76,8 +76,8 @@ namespace FirstApplication
             
         public static void DisplayRoom()
         {
-		string temp2;
-                string temp3;
+		string temp;
+                
                 
                 /* 
                 LuxuryRoom luxroom1 = new LuxuryRoom();
@@ -104,8 +104,8 @@ namespace FirstApplication
                 Reservation reservation1 = new Reservation();
                 Console.WriteLine("Would you be interested in one of our Packages like our bundle of 5 Luxury Rooms and 5 Normal Rooms for only half of its original price?");
                 Console.WriteLine("Y/N?");
-                temp2 = Console.ReadLine();
-                if (temp2.ToUpper() == "Y")
+                temp = Console.ReadLine();
+                if (temp.ToUpper() == "Y")
                 {   
                     // Constructors call Factory method
                     Package[] packages = new Package[2];
@@ -115,8 +115,8 @@ namespace FirstApplication
                 
                     Console.WriteLine("1) FiveLuxuryAndNormalRoom \n 2)TwentyNormalRoom \n 3) back");
                     Console.WriteLine("choose 1");
-                    temp3 = Console.ReadLine();
-                    if(temp3 == "1")
+                    temp = Console.ReadLine();
+                    if(temp == "1")
                     {
                     // Calling Factory CreateRoom Method Method
                         foreach (Room room in packages[0].Rooms)
@@ -126,7 +126,7 @@ namespace FirstApplication
                         reservation1.RoomList.Concat(packages[0].Rooms);
                         Selection();
                     }
-                    else if (temp3 == "2")
+                    else if (temp == "2")
                     {
                         reservation1.RoomList.AddRange(packages[1].Rooms);
                         Selection();
