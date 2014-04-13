@@ -72,6 +72,34 @@ namespace FirstApplication
                         }
 
                         //TODO ask again after choosing room
+                        Console.WrietLine("Do you want to add more rooms? Y/N?");
+                        choice=Console.ReadLine();
+                        valid = Validate.ValidateYesOrNo(choice);
+                        while(choice!="N")
+                        {
+                            Console.WriteLine("Please Choose the Room you want to book (1/2/3)");
+                            choice=Console.ReadLine();
+                            if (choice == "1")
+                            {
+                                reservation1.RoomList.Add(new LuxuryRoom());
+                            }
+                            if (choice == "2")
+                            {
+                                reservation1.RoomList.Add(new NormalRoom());
+                            }
+                            if (choice == "3")
+                            {
+                                reservation1.RoomList.Add(new BudgetRoom());
+                            }
+                            else 
+                            {
+                                Console.WriteLine("Invalid input, please try again.");
+                                Console.WriteLine("Please Choose the Room you want to book (1/2/3)");
+                            }
+                        }
+                        
+                        //Checkout
+                        
 
                     }
                     else if (choice == "N")
