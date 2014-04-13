@@ -69,6 +69,8 @@ namespace FirstApplication
             temp = Console.ReadLine();
             if (temp.ToUpper() == "Y")
             {
+
+                // Constructors call Factory method
                 Package[] packages = new Package[2];
 
                 packages[0] = new FiveLuxuryAndNormalRoom();
@@ -81,13 +83,16 @@ namespace FirstApplication
                 {
                     // Calling Factory Method
                     packages[0].CreateRooms();
+                    reservation1.RoomList.AddRange(packages[0].Rooms);
                     Console.WriteLine(packages[0].Rooms);
+                    Console.WriteLine(reservation1.RoomList);
 
                 }
                 if (temp == "2")
                 {
                     packages[1].CreateRooms();
                     reservation1.RoomList.AddRange(packages[1].Rooms);
+                    
                 }
 
 

@@ -19,6 +19,7 @@ namespace FirstApplication
 
         public List<Room> Rooms
         {
+            set { _rooms = value; }
             get { return _rooms; }
         }
         // Factory Method
@@ -32,11 +33,20 @@ namespace FirstApplication
         // Factory Method implementation
         public override void CreateRooms()
         {
-            for (int i = 0; i <= 4; i++)
-            { Rooms.Add(new LuxuryRoom()); }
+            
+            
+            Rooms.Add(new LuxuryRoom());
+            Rooms.Add(new LuxuryRoom());
+            Rooms.Add(new LuxuryRoom());
+            Rooms.Add(new LuxuryRoom());
+            Rooms.Add(new LuxuryRoom());
 
-            for (int i = 0; i <= 4; i++)
-            { Rooms.Add(new NormalRoom()); }
+
+            Rooms.Add(new NormalRoom());
+            Rooms.Add(new NormalRoom());
+            Rooms.Add(new NormalRoom());
+            Rooms.Add(new NormalRoom());
+            Rooms.Add(new NormalRoom());
         }
     }
 

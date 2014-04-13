@@ -34,9 +34,9 @@ namespace FirstApplication
 
         public void CalculateTotalPrice()
         {
-            foreach (Room room in roomList)
+            foreach (Room room in RoomList)
             {
-                totalPrice += room.DiscountPrice*days;
+                this.totalPrice += room.DiscountPrice*days;
             }
 
         }
