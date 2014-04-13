@@ -78,6 +78,8 @@ namespace FirstApplication
         {
 		string temp2;
                 string temp3;
+                
+                /* 
                 LuxuryRoom luxroom1 = new LuxuryRoom();
                 NormalRoom normalroom1 = new NormalRoom();
                 BudgetRoom budgetroom1 = new BudgetRoom();
@@ -97,6 +99,7 @@ namespace FirstApplication
                 r.DoDisplay();
                 r.DiscountPrice = r.DoCalculatePrice(r.Price, 90);
                 }
+                */
 
                 Reservation reservation1 = new Reservation();
                 Console.WriteLine("Would you be interested in one of our Packages like our bundle of 5 Luxury Rooms and 5 Normal Rooms for only half of its original price?");
