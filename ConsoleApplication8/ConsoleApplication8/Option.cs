@@ -1,14 +1,8 @@
  public class Option
     {
-        public static bool UserLogin()
+        public static void NewUser()
         {
-            string temp;            
-            Console.WriteLine("Welcome to this hotel");
-            Console.WriteLine("Are you a new user?(Y/N)");
-            temp = Console.ReadLine();
-            User user = new User();
-            if (temp.ToUpper() == "Y")
-            {
+                User user = new User();
                 Console.WriteLine("Please enter your desired username");
                 user.Name = Console.ReadLine();
                 Console.WriteLine("Please enter your desired password");
@@ -22,24 +16,29 @@
                     Console.ReadKey();
                     Console.Clear();
                 }
-                return true;
                 
-            }
-            else 
-            {
-                Console.WriteLine("please enter username");
-                user.Name = Console.ReadLine();
-                Console.WriteLine("please enter password");
-                user.Password = Console.ReadLine();
-                if (user.Login())
-                    user.DisplayWelcome();
-                else
-                    Console.WriteLine("failedlogin");
-                return false;
-            }
-
-
+                
+            
         }
+            public static void AlreadyUser()
+            {
+               {
+                           User user = new User();
+                           Console.WriteLine("please enter username");
+                           user.Name = Console.ReadLine();
+                           Console.WriteLine("please enter password");
+                           user.Password = Console.ReadLine();
+                           if (user.Login())
+                           user.DisplayWelcome();
+                           else
+                           Console.WriteLine("failedlogin");
+                          
+                   
+              }
+            }
+
+
+        
 
         public static void DisplayRoom()
         {
