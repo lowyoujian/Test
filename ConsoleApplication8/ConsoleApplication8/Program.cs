@@ -11,13 +11,30 @@ namespace FirstApplication
     public class Program
     {
         static void Main(string[] args)
-        {           
-            bool loginConfirmation;
-            loginConfirmation=Option.UserLogin();            
-            if (loginConfirmation)
+        {
+            string temp;
+            Console.WriteLine("Welcome to this hotel");
+            Console.WriteLine("Are you a new user?(Y/N)");
+            temp = Console.ReadLine();
+            while (temp.ToUpper() != "Y" || temp.ToUpper() != "N")
+            {             
+            if (temp.ToUpper() == "Y")
             {
-                Option.DisplayRoom();               
+                Option.NewUser();
+                Option.DisplayRoom();   
             }
+            else if (temp.ToUpper() == "N")
+            {
+                Option.AlreadyUser();
+                Option.DisplayRoom();   
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please try again. Y/N ?");
+                temp = Console.ReadLine();
+            }
+             }
+
             Console.ReadKey();
         }
 
