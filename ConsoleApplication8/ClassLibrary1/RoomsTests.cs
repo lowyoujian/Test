@@ -55,11 +55,12 @@ namespace RoomsTests
         {            
             rm1.DoDisplay();
             midr.Verify(m => m.DisplayRoomInfo());
-
+            
+            DoTestFixtureTearDownOnce();
             Assert.AreEqual(2, countSetUp);
             Assert.AreEqual(1, countTearDown);
             Assert.AreEqual(1, testFixtureCountSetUp);
-            Assert.AreEqual(0, testFixtureCountTearDown);
+            Assert.AreEqual(1, testFixtureCountTearDown);
         }
         
         [Test]
