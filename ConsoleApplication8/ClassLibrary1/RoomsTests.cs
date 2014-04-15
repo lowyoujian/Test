@@ -55,23 +55,39 @@ namespace RoomsTests
         {            
             rm1.DoDisplay();
             midr.Verify(m => m.DisplayRoomInfo());
-            
+
             DoTestFixtureTearDownOnce();
-            Assert.AreEqual(2, countSetUp);
-            Assert.AreEqual(1, countTearDown);
+
+            Assert.AreEqual(3, countSetUp);
+            Assert.AreEqual(2, countTearDown);
             Assert.AreEqual(1, testFixtureCountSetUp);
             Assert.AreEqual(1, testFixtureCountTearDown);
         }
         
         [Test]
-        public void DoCalculatePrice_usingMoq_CalculatePrice()
+        public void DoCalculatePrice_usingMoqwithOneParameter_CalculatePrice()
         {
            
-            rm2.DoCalculatePrice(1);
-            micp.Verify(m => m.CalculatePrice(1));
+            rm2.DoCalculatePrice(1.00);
+            micp.Verify(m => m.CalculatePrice(1.00));
 
             Assert.AreEqual(1, countSetUp);
             Assert.AreEqual(0, countTearDown);
+            Assert.AreEqual(1, testFixtureCountSetUp);
+            Assert.AreEqual(0, testFixtureCountTearDown);
+
+
+        }
+
+        [Test]
+        public void DoCalculatePrice_usingMoqwithTwoParameter_CalculatePrice()
+        {
+
+            rm2.DoCalculatePrice(1.00,1);
+            micp.Verify(m => m.CalculatePrice(1.00,1));
+
+            Assert.AreEqual(2, countSetUp);
+            Assert.AreEqual(1, countTearDown);
             Assert.AreEqual(1, testFixtureCountSetUp);
             Assert.AreEqual(0, testFixtureCountTearDown);
 
